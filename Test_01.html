@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAVARA | Modern Fashion</title>
+  <!-- Import Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #f8f9fa;
+      --accent-color: #e74c3c;
+      --text-color: #333;
+      --light-gray: #f4f4f4;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      color: var(--text-color);
+      background-color: white;
+    }
+    /* Header & Navigation */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5%;
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 0.8rem;
+    }
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+    }
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .logo span {
+      color: var(--accent-color);
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+    }
+    .nav-menu li {
+      margin: 0 15px;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      position: relative;
+    }
+    .nav-menu a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s;
+    }
+    .nav-menu a:hover:after {
+      width: 100%;
+    }
+    .header-icons {
+      display: flex;
+      align-items: center;
+    }
+    .header-icons div {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+    /* Hero Section */
+    .hero {
+      height: 80vh;
+      position: relative;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+      color: #e74c3c;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #c0392b;
+    }
+    /* Featured Categories */
+    .featured-categories {
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .section-title {
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background-color: var(--accent-color);
+      bottom: -10px;
+      left: 25%;
+    }
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 350px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .category-card:hover {
+      transform: translateY(-10px);
+    }
+    .category-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .category-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      padding: 20px;
+      color: white;
+      text-align: left;
+    }
+    .category-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    /* New Arrivals */
+    .new-arrivals {
+      padding: 80px 5%;
+      background-color: var(--secondary-color);
+      text-align: center;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .product-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-img-container {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.1);
+    }
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 5px 10px;
+      font-size: 0.7rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .product-quick-actions {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      background-color: rgba(0,0,0,0.7);
+      transition: bottom 0.3s;
+    }
+    .product-card:hover .product-quick-actions {
+      bottom: 0;
+    }
+    .quick-action-btn {
+      background-color: white;
+      color: var(--text-color);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .quick-action-btn:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    .product-info {
+      padding: 15px;
+      text-align: left;
+    }
+    .product-category {
+      color: #777;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+    .product-title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .product-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .current-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent-color);
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    .add-to-cart {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: background-color 0.3s;
+    }
+    .add-to-cart:hover {
+      background-color: var(--accent-color);
+    }
+    /* Features Section */
+    .features {
+      padding: 60px 5%;
+      background-color: white;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      padding: 30px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--light-gray);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    .feature-title {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    .feature-desc {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    /* Newsletter */
+    .newsletter {
+      padding: 80px 5%;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .newsletter p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,0.8);
+    }
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .newsletter-input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+    }
+    .newsletter-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .newsletter-btn:hover {
+      background-color: #c0392b;
+    }
+    /* Instagram Feed */
+    .instagram-feed {
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 40px;
+    }
+    .instagram-item {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .instagram-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .instagram-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .instagram-item:hover .instagram-img {
+      transform: scale(1.1);
+    }
+    .instagram-item:hover .instagram-overlay {
+      opacity: 1;
+    }
+    .instagram-icon {
+      color: white;
+      font-size: 1.5rem;
+    }
+    /* Footer */
+    footer {
+      background-color: #1a252f;
+      color: rgba(255,255,255,0.8);
+      padding: 60px 5% 20px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .footer-col h3:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+      bottom: 0;
+      left: 0;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .social-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    .social-icon:hover {
+      background-color: var(--accent-color);
+    }
+    .contact-info div {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .contact-icon {
+      margin-right: 10px;
+      color: var(--accent-color);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .main-header {
+        flex-direction: column;
+        padding: 15px 5%;
+      }
+      .logo {
+        margin-bottom: 15px;
+      }
+      .nav-menu {
+        margin: 15px 0;
+      }
+      .nav-menu li {
+        margin: 0 8px;
+      }
+      .header-icons {
+        margin-top: 15px;
+      }
+      .newsletter-form {
+        flex-direction: column;
+      }
+      .newsletter-input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+      .newsletter-btn {
+        border-radius: 4px;
+        padding: 10px;
+      }
+    }
+    /* Additional Styles */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background-color: white;
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.active {
+      left: 0;
+    }
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .close-menu {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+    .mobile-nav li {
+      margin-bottom: 15px;
+    }
+    .mobile-nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: block;
+      padding: 5px 0;
+    }
+    .mobile-contact {
+      margin-bottom: 30px;
+      padding: 20px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .mobile-contact div {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .mobile-social {
+      display: flex;
+      gap: 15px;
+    }
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+    }
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 320px;
+      height: 100%;
+      background-color: white;
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-sidebar.active {
+      right: 0;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .close-cart {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex: 1;
+      padding: 40px 0;
+    }
+    .empty-cart-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+    .cart-empty p {
+      margin-bottom: 30px;
+      color: #777;
+    }
+    .cart-footer {
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .view-cart-btn {
+      display: block;
+      text-align: center;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-left">
+      <span></span>
+    </div>
+    <div class="top-right">
+      <a href="#">My Account</a> | 
+      <a href="#">Track Order</a> | 
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <!-- Header -->
+  <header>
+    <div class="main-header">
+      <div class="logo">
+        MAVARA<span>.</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#">NEW IN</a></li>
+        <li><a href="#">DRESS</a></li>
+        <li><a href="#">TOP</a></li>
+        <li><a href="#">BOTTOM</a></li>
+        <li><a href="#">GIFT VOUCHERS</a></li>
+        <li><a href="#">SIZE GUIDE</a></li>
+      </ul>
+      <div class="header-icons">
+        <div class="search-icon">Search</div>
+        <div class="account-icon">Account</div>
+        <div class="wishlist-icon">Wishlist</div>
+        <div class="cart-icon">Cart (0)</div>
+      </div>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="assets/videos/summervid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h1>SUMMER COLLECTION 2025</h1>
+    <p>Discover the latest trends in fashion and explore our new collection</p>
+    <a href="#" class="btn">Shop Now</a>
+  </section>
+  <!-- Featured Categories -->
+  <section class="featured-categories">
+    <div class="section-title">
+      <h2>Shop By Category</h2>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card">
+        <img src="/api/placeholder/400/500" alt="Women's Fashion" class="category-img">
+        <div class="category-content">
+          <h3>Women's Fashion</h3>
+          <a href="#" class="btn">Explore</a>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="/api/placeholder/400/500" alt="Men's Fashion" class="category-img">
+        <div class="category-content">
+          <h3>Men's Fashion</h3>
+          <a href="#" class="btn">Explore</a>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="/api/placeholder/400/500" alt="Accessories" class="category-img">
+        <div class="category-content">
+          <h3>Accessories</h3>
+          <a href="#" class="btn">Explore</a>
+        </div>
+      </div>
+      <div class="category-card">
+        <img src="/api/placeholder/400/500" alt="Footwear" class="category-img">
+        <div class="category-content">
+          <h3>Footwear</h3>
+          <a href="#" class="btn">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- New Arrivals -->
+  <section class="new-arrivals">
+    <div class="section-title">
+      <h2>New Arrivals</h2>
+    </div>
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-img-container">
+          <img src="/api/placeholder/400/500" alt="Product 1" class="product-img">
+          <div class="product-badge">New</div>
+          <div class="product-quick-actions">
+            <div class="quick-action-btn">❤</div>
+            <div class="quick-action-btn">👁</div>
+            <div class="quick-action-btn">↔</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Women</div>
+          <h3 class="product-title">Floral Summer Dress</h3>
+          <div class="product-price">
+            <div>
+              <span class="current-price">$49.99</span>
+              <span class="old-price">$69.99</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-img-container">
+          <img src="/api/placeholder/400/500" alt="Product 2" class="product-img">
+          <div class="product-badge">Sale</div>
+          <div class="product-quick-actions">
+            <div class="quick-action-btn">❤</div>
+            <div class="quick-action-btn">👁</div>
+            <div class="quick-action-btn">↔</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Men</div>
+          <h3 class="product-title">Casual Linen Shirt</h3>
+          <div class="product-price">
+            <div>
+              <span class="current-price">$39.99</span>
+              <span class="old-price">$59.99</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-img-container">
+          <img src="/api/placeholder/400/500" alt="Product 3" class="product-img">
+          <div class="product-quick-actions">
+            <div class="quick-action-btn">❤</div>
+            <div class="quick-action-btn">👁</div>
+            <div class="quick-action-btn">↔</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessories</div>
+          <h3 class="product-title">Leather Crossbody Bag</h3>
+          <div class="product-price">
+            <div>
+              <span class="current-price">$79.99</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-img-container">
+          <img src="/api/placeholder/400/500" alt="Product 4" class="product-img">
+          <div class="product-badge">Hot</div>
+          <div class="product-quick-actions">
+            <div class="quick-action-btn">❤</div>
+            <div class="quick-action-btn">👁</div>
+            <div class="quick-action-btn">↔</div>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Footwear</div>
+          <h3 class="product-title">Classic Leather Sneakers</h3>
+          <div class="product-price">
+            <div>
+              <span class="current-price">$89.99</span>
+              <span class="old-price">$109.99</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Features -->
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🚚</div>
+        <h3 class="feature-title">Free Shipping</h3>
+        <p class="feature-desc">Free shipping on all orders over $50</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">↩️</div>
+        <h3 class="feature-title">Easy Returns</h3>
+        <p class="feature-desc">30-day easy return policy</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3 class="feature-title">Secure Payment</h3>
+        <p class="feature-desc">Your payment information is secure</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3 class="feature-title">24/7 Support</h3>
+        <p class="feature-desc">Friendly customer support available</p>
+      </div>
+    </div>
+  </section>
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Get the latest updates, news and product offers sent straight to your inbox</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address" class="newsletter-input" required>
+      <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+  </section>
+  <!-- Instagram Feed -->
+  <section class="instagram-feed">
+    <div class="section-title">
+      <h2>Follow Us on Instagram</h2>
+    </div>
+    <div class="instagram-grid">
+      <div class="instagram-item">
+        <img src="/api/placeholder/300/300" alt="Instagram Post" class="instagram-img">
+        <div class="instagram-overlay">
+          <div class="instagram-icon">📸</div>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="/api/placeholder/300/300" alt="Instagram Post" class="instagram-img">
+        <div class="instagram-overlay">
+          <div class="instagram-icon">📸</div>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="/api/placeholder/300/300" alt="Instagram Post" class="instagram-img">
+        <div class="instagram-overlay">
+          <div class="instagram-icon">📸</div>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="/api/placeholder/300/300" alt="Instagram Post" class="instagram-img">
+        <div class="instagram-overlay">
+          <div class="instagram-icon">📸</div>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="/api/placeholder/300/300" alt="Instagram Post" class="instagram-img">
+        <div class="instagram-overlay">
+          <div class="instagram-icon">📸</div>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="/api/placeholder/300/300" alt="Instagram Post" class="instagram-img">
+        <div class="instagram-overlay">
+          <div class="instagram-icon">📸</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>MAVARA</h3>
+        <p>Discover the latest trends in fashion and shop our curated collection of clothing, accessories, and footwear.</p>
+        <div class="footer-social">
+          <div class="social-icon">FB</div>
+          <div class="social-icon">IG</div>
+          <div class="social-icon">TW</div>
+          <div class="social-icon">PT</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#"></a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Customer Care</h3>
+        <ul class="footer-links">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+          <div>
+            <span class="contact-icon">📍</span>
+            <span>Fashion Street, Colombo, Sri Lanka</span>
+          </div>
+          <div>
+            <span class="contact-icon">📱</span>
+            <span>+1 234 567 890</span>
+          </div>
+          <div>
+            <span class="contact-icon">✉️</span>
+            <span>info@elegance.com</span>
+          </div>
+          <div>
+            <span class="contact-icon">🕒</span>
+            <span>Mon-Fri: 9am-6pm, Sat: 10am-4pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Our Newsletter</h3>
+        <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+        <form class="footer-newsletter">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="payment-methods">
+          <h4>We Accept</h4>
+          <div class="payment-icons">
+            <span>💳</span>
+            <span>💳</span>
+            <span>💳</span>
+            <span>💳</span>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="bottom-footer">
+        <div class="copyright">
+          <p>&copy; 2025 ANCE. All Rights Reserved.</p>
+        </div>
+        <div class="footer-links-bottom">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+  </footer>
+  <!-- Mobile Menu -->
+<div class="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="logo">
+      MAVARA<span>.</span>
+    </div>
+    <div class="close-menu">✕</div>
+  </div>
+  <ul class="mobile-nav">
+    <li><a href="#">NEW IN</a></li>
+    <li><a href="#">DRESS</a></li>
+    <li><a href="#">TOP</a></li>
+    <li><a href="#">BOTTOM</a></li>
+    <li><a href="#">GIFT VOUCHERS</a></li>
+    <li><a href="#">SIZE GUIDE</a></li>
+  </ul>
+  <div class="mobile-contact">
+    <div><span class="contact-icon">📱</span> +1 234 567 890</div>
+    <div><span class="contact-icon">✉️</span> info@elegance.com</div>
+  </div>
+  <div class="mobile-social">
+    <div class="social-icon">FB</div>
+    <div class="social-icon">IG</div>
+    <div class="social-icon">TW</div>
+    <div class="social-icon">PT</div>
+  </div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div class="mobile-overlay"></div>
+<!-- Cart Sidebar -->
+<div class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Your Shopping Cart</h3>
+    <div class="close-cart">✕</div>
+  </div>
+  <div class="cart-empty">
+    <div class="empty-cart-icon">🛒</div>
+    <p>Your cart is empty</p>
+    <a href="#" class="btn">Shop Now</a>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span>$0.00</span>
+    </div>
+    <a href="#" class="btn checkout-btn">Checkout</a>
+    <a href="#" class="view-cart-btn">View Cart</a>
+  </div>
+</div>
+<style>
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  }
+  .mobile-menu.active {
+    left: 0;
+  }
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .close-menu {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .mobile-nav {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  .mobile-nav li {
+    margin-bottom: 15px;
+  }
+  .mobile-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 5px 0;
+  }
+  .mobile-contact {
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  .mobile-contact div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .mobile-social {
+    display: flex;
+    gap: 15px;
+  }
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+  }
+  /* Cart Sidebar */
+  .cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 320px;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-sidebar.active {
+    right: 0;
+  }
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .close-cart {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    padding: 40px 0;
+  }
+  .empty-cart-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #ccc;
+  }
+  .cart-empty p {
+    margin-bottom: 30px;
+    color: #777;
+  }
+  .cart-footer {
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .checkout-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .view-cart-btn {
+    display: block;
+    text-align: center;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  /* Additional Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .main-header {
+      padding: 15px 5%;
+    }
+    .nav-menu,
+    .header-icons {
+      display: none;
+    }
+    .mobile-menu-toggle {
+      display: block;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+</style>
+<script>
+  // JavaScript for Mobile Menu and Cart Sidebar Functionality
+  // Mobile Menu Toggle
+  document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+    document.querySelector('.mobile-menu').classList.add('active');
+    document.querySelector('.mobile-overlay').style.display = 'block';
+  });
+  document.querySelector('.close-menu').addEventListener('click', function() {
+    document.querySelector('.mobile-menu').classList.remove('active');
+    document.querySelector('.mobile-overlay').style.display = 'none';
+  });
+  // Cart Sidebar Toggle
+  document.querySelector('.cart-icon').addEventListener('click', function() {
+    document.querySelector('.cart-sidebar').classList.add('active');
+    document.querySelector('.mobile-overlay').style.display = 'block';
+  });
+  document.querySelector('.close-cart').addEventListener('click', function() {
+    document.querySelector('.cart-sidebar').classList.remove('active');
+    document.querySelector('.mobile-overlay').style.display = 'none';
+  });
+  // Overlay Click
+  document.querySelector('.mobile-overlay').addEventListener('click', function() {
+    document.querySelector('.mobile-menu').classList.remove('active');
+    document.querySelector('.cart-sidebar').classList.remove('active');
+    this.style.display = 'none';
+  });
+  // Product Image Hover Effect
+  const productCards = document.querySelectorAll('.product-card');
+  productCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.querySelector('.product-quick-actions').style.bottom = '0';
+    });
+    card.addEventListener('mouseleave', function() {
+      this.querySelector('.product-quick-actions').style.bottom = '-50px';
+    });
+  });
+</script>
+</body>
+</html>
+  
